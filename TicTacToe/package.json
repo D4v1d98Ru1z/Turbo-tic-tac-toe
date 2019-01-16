@@ -1,7 +1,7 @@
 {
-  "name": "nodejsbasico",
+  "name": "tic-tac-toe",
   "version": "1.0.0",
-  "description": "Repositorio para el curso básico de Node.js de Platzi.",
+  "description": "Real time tic-tac-toe game with Node js.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/platzi/nodejsbasico.git"
+    "url": "git+https://github.com/D4v1d98Ru1z/Turbo-tic-tac-toe.git"
   },
   "keywords": [
     "nodejs",
@@ -20,11 +20,13 @@
   "author": "Platzi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/platzi/nodejsbasico/issues"
+    "url": "https://github.com/D4v1d98Ru1z/Turbo-tic-tac-toe/issues"
   },
-  "homepage": "https://github.com/platzi/nodejsbasico#readme",
+  "homepage": "https://github.com/D4v1d98Ru1z/Turbo-tic-tac-toe#readme",
   "dependencies": {
-    "nodemon": "^1.18.4",
     "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }
