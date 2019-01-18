@@ -3,7 +3,18 @@ module.exports = () => {
         onWait = [],
         onMatch = {}
 
-    
+    const loop = setInterval(checkQueue, 5000)
+
+    function checkQueue() { 
+        // Print the values from the pool
+        console.info(`Queues: { Players: ${Object.keys(players).length}, onWait: ${onWait.length} }`)
+        while(onWait.length > 2){
+            console.info(`Building the rom...`)
+            const player1 = players[onWait.pop()].user.name
+            const player2 = players[onWait.pop()].user.name
+            console.log(`There's a match between Player 1: ${player1} and Player 2: ${player2}`)
+        }
+    }
     
     return {
         userConnect: ({socket, user}) => {
