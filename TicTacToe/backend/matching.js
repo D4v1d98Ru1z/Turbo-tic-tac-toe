@@ -9,7 +9,7 @@ module.exports = () => {
         // Print the values from the pool
         console.info(`Queues: { Players: ${Object.keys(players).length}, onWait: ${onWait.length} }`)
         while(onWait.length > 2){
-            console.info(`Building the rom...`)
+            console.info(`Building the room...`)
             const player1 = players[onWait.pop()].user.name
             const player2 = players[onWait.pop()].user.name
             console.log(`There's a match between Player 1: ${player1} and Player 2: ${player2}`)
