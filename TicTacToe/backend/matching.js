@@ -1,3 +1,5 @@
+const { newGame } = require('./gameState')
+
 module.exports = () => {
     let players = {},
         onWait = [],
@@ -10,21 +12,33 @@ module.exports = () => {
         console.info(`Queues: { Players: ${Object.keys(players).length}, onWait: ${onWait.length}, onMatch: ${Object.keys(onMatch).length} }`)
         while(onWait.length >= 2){
             console.info(`Building the room...`)
-            const player1 = players[onWait.pop()].user.name
-            const player2 = players[onWait.pop()].user.name
-            console.log(`There's a match between Player 1: ${player1} and Player 2: ${player2}`)
+            createMatchRoom(onWait.pop(), onWait.pop())
         }
     }
     
-    function createMatch(firstPlayerID, secondPlayerID){
+    function createMatchRoom(firstPlayerID, secondPlayerID){
         const roomId = firstPlayerID + secondPlayerID
         players[firstPlayerID].roomId = roomId
         players[secondPlayerID].roomId = roomId
+        console.log(`There's a match between Player 1: ${firstPlayerID} and Player 2: ${secondPlayerID} room created`)
         
-        if(!onMatch[roomId]) onMatch[roomId] = {}
+        if(!onMatch[roomId]) onMatch[roomId] = newGame({
+            players: [players[firstPlayerID], players[secondPlayerID]],
+            roomId
+        })
 
-        players[firstPlayerID].socket.emit('gameState', {})
-        players[secondPlayerID].socket.emit('gameState', {})
+        players[firstPlayerID].socket.emit('gameState', newGame({
+            players: [players[firstPlayerID], players[secondPlayerID]],
+            roomId,
+            playerId: 0,
+            opponentId: 1
+        }))
+        players[secondPlayerID].socket.emit('gameState', newGame({
+            players: [players[firstPlayerID], players[secondPlayerID]],
+            roomId,
+            playerId: 1,
+            opponentId: 0
+        }))
     }
 
     return {
