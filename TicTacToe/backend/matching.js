@@ -16,6 +16,16 @@ module.exports = () => {
         }
     }
     
+    function createMatch(firstPlayerID, secondPlayerID){
+        const roomId = firstPlayerID + secondPlayerID
+        players[firstPlayerID].roomId = roomId
+        players[secondPlayerID].roomId = roomId
+        
+        if(!onMatch[roomId]) onMatch[roomId] = {}
+
+        players[firstPlayerID].socket.emit('gameState', {})
+        players[secondPlayerID].socket.emit('gameState', {})
+    }
 
     return {
         userConnect: ({socket, user}) => {
