@@ -7,8 +7,8 @@ module.exports = () => {
 
     function checkQueue() { 
         // Print the values from the pool
-        console.info(`Queues: { Players: ${Object.keys(players).length}, onWait: ${onWait.length} }`)
-        while(onWait.length > 2){
+        console.info(`Queues: { Players: ${Object.keys(players).length}, onWait: ${onWait.length}, onMatch: ${Object.keys(onMatch).length} }`)
+        while(onWait.length >= 2){
             console.info(`Building the room...`)
             const player1 = players[onWait.pop()].user.name
             const player2 = players[onWait.pop()].user.name
@@ -16,6 +16,7 @@ module.exports = () => {
         }
     }
     
+
     return {
         userConnect: ({socket, user}) => {
             if(!players[socket.id]){

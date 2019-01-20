@@ -8,6 +8,7 @@ module.exports = function(io) {
         })
         socket.on('disconnect', () => {
             console.info(`User with id: ${socket.id} disconnected.`)
+            matching.userDisconnect(socket.id)
         })
         socket.on('message', (id, msg) => {
             console.log(id, msg)
