@@ -11,7 +11,7 @@ const banner = `
 * ----------------------------------------- *
 *  Status: Online                           *
 *  Server port: ${port}                        *
-*  Frontend link: http://localhost:${port}     * 
+*  Frontend link: http://localhost:${port-1}     * 
 *********************************************
 `
 
